@@ -25,6 +25,7 @@ public class PerguntaController {
 
     private final PerguntaService service;
 
+    // Cadastra uma pergunta e devolve 201, 400 ou 422 com a URL do novo recurso no cabeçalho Location
     @PostMapping
     @Operation(summary = "Cadastra uma pergunta com 4 alternativas (apenas 1 correta)")
     @ApiResponse(responseCode = "201", description = "Pergunta criada")
@@ -37,6 +38,7 @@ public class PerguntaController {
         return ResponseEntity.created(location).body(criada);
     }
 
+    // Lista todas as perguntas ou só as da categoria informada
     @GetMapping
     @Operation(summary = "Lista as perguntas, com filtro opcional por categoria")
     @ApiResponse(responseCode = "200", description = "Lista de perguntas")
@@ -46,6 +48,7 @@ public class PerguntaController {
         return service.listar(categoria);
     }
 
+    // Busca perguntas cujo enunciado contém o texto informado (ignora maiúsculas)
     @GetMapping("/busca")
     @Operation(summary = "Busca perguntas pelo texto do enunciado")
     @ApiResponse(responseCode = "200", description = "Perguntas encontradas (lista vazia se nenhuma)")
@@ -55,6 +58,7 @@ public class PerguntaController {
         return service.buscarPorTexto(texto);
     }
 
+    // Consulta uma pergunta pelo id
     @GetMapping("/{id}")
     @Operation(summary = "Consulta uma pergunta pelo id")
     @ApiResponse(responseCode = "200", description = "Pergunta encontrada")
@@ -63,6 +67,7 @@ public class PerguntaController {
         return service.buscarPorId(id);
     }
 
+    // Atualiza uma pergunta existente, validando os dados e as regras de negócio
     @PutMapping("/{id}")
     @Operation(summary = "Atualiza uma pergunta")
     @ApiResponse(responseCode = "200", description = "Pergunta atualizada")
@@ -73,6 +78,7 @@ public class PerguntaController {
         return service.atualizar(id, req);
     }
 
+    // Exclui uma pergunta pelo id
     @DeleteMapping("/{id}")
     @Operation(summary = "Exclui uma pergunta")
     @ApiResponse(responseCode = "204", description = "Pergunta excluida")
