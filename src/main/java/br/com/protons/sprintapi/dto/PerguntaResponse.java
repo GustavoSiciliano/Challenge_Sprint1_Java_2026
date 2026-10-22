@@ -6,6 +6,7 @@ import br.com.protons.sprintapi.model.Setor;
 
 import java.util.List;
 
+// Dados de uma pergunta devolvidos pela API
 public record PerguntaResponse(
         Long id,
         String enunciado,
@@ -14,6 +15,7 @@ public record PerguntaResponse(
         int pontos,
         List<AlternativaResponse> alternativas) {
 
+    // Converte a entidade Pergunta (e suas alternativas) neste DTO de resposta.
     public static PerguntaResponse de(Pergunta p) {
         return new PerguntaResponse(
                 p.getId(),

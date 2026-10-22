@@ -9,7 +9,9 @@ import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
+// Dados de entrada para cadastrar ou atualizar uma pergunta.
 public record PerguntaRequest(
+
         @NotBlank(message = "O enunciado e obrigatorio")
         @Size(min = 10, max = 300, message = "O enunciado deve ter entre 10 e 300 caracteres")
         String enunciado,
