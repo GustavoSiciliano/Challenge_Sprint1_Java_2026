@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenApiConfig {
 
+    // Configura título, versão e descrição que aparecem na página do Swagger.
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI().info(new Info()
