@@ -1,6 +1,6 @@
 package br.com.protons.sprintapi.model;
 
-/** Faixa etaria da pergunta. A pontuacao por acerto depende da categoria. */
+// Define as categorias e seus pontos por acerto
 public enum Categoria {
     CRIANCA(10),
     JOVEM(20),

@@ -15,7 +15,7 @@ public record PerguntaResponse(
         int pontos,
         List<AlternativaResponse> alternativas) {
 
-    // Converte a entidade Pergunta (e suas alternativas) neste DTO de resposta.
+    // Converte a entidade Pergunta (e suas alternativas) neste DTO de resposta
     public static PerguntaResponse de(Pergunta p) {
         return new PerguntaResponse(
                 p.getId(),

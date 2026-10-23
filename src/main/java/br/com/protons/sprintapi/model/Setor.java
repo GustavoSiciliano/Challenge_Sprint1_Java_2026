@@ -1,6 +1,6 @@
 package br.com.protons.sprintapi.model;
 
-/** Area de aplicacao da tecnologia nuclear a que a pergunta se refere. */
+// Define as áreas de aplicação da tecnologia nuclear
 public enum Setor {
     SAUDE,
     AGRICULTURA,

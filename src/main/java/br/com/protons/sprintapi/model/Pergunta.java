@@ -13,6 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+
+// Representa uma pergunta do sistema
 public class Pergunta {
 
     @Id
@@ -30,6 +32,7 @@ public class Pergunta {
     @Column(nullable = false, length = 20)
     private Setor setor;
 
+    // Associa as alternativas à pergunta
     @OneToMany(mappedBy = "pergunta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Alternativa> alternativas = new ArrayList<>();
 }

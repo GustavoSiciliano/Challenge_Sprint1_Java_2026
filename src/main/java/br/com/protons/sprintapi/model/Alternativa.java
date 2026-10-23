@@ -10,6 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+
+// Representa uma alternativa da pergunta
 public class Alternativa {
 
     @Id
@@ -26,6 +28,7 @@ public class Alternativa {
     @JoinColumn(name = "id_pergunta", nullable = false)
     private Pergunta pergunta;
 
+    // Cria uma alternativa com texto, correção e pergunta associada
     public Alternativa(String texto, boolean correta, Pergunta pergunta) {
         this.texto = texto;
         this.correta = correta;

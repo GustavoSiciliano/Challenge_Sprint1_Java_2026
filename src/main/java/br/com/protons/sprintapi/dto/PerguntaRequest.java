@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
-// Dados de entrada para cadastrar ou atualizar uma pergunta.
+// Dados de entrada para cadastrar ou atualizar uma pergunta
 public record PerguntaRequest(
 
         @NotBlank(message = "O enunciado e obrigatorio")
