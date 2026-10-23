@@ -1,16 +1,16 @@
 # Átomo+ — API do Quiz (Java Advanced · Sprint 1)
 
-API REST em **Java 21 + Spring Boot** que serve de motor do quiz educativo sobre as aplicações benéficas da tecnologia nuclear (saúde, agricultura, indústria, pesquisa e energia). Projeto do **Challenge CTMSP 2026** (Centro Tecnológico da Marinha em São Paulo) — FIAP, 2TDS.
+API REST em **Java 21 + Spring Boot** que serve de motor do quiz educativo sobre as aplicações benéficas da tecnologia nuclear (saúde, agricultura, indústria, pesquisa e energia). Projeto do **Challenge CTMSP 2026** (Centro Tecnológico da Marinha em São Paulo) - FIAP, 2TDS.
 
 ## Grupo
 
-| Nome | RM |
-| --- | --- |
-| _preencher_ | _preencher_ |
-| _preencher_ | _preencher_ |
-| _preencher_ | _preencher_ |
-| _preencher_ | _preencher_ |
-| _preencher_ | _preencher_ |
+| Nome                | RM         |
+|---------------------|------------|
+| _Gustavo Siciliano_ | _RM568419_ |
+| _Gustavo de Jesus_  | _RM567926_ |
+| _Manuel Gouveia_    | _RM567458_ |
+| _Samuel Keniti_     | _RM567614_ |
+| _Vinicius Morrone_  | _RM566884_ |
 
 ## O que foi desenvolvido nesta Sprint
 
@@ -84,11 +84,11 @@ Códigos de erro: `400` (dados inválidos), `404` (pergunta não encontrada), `4
 
 ```
 src/main/java/br/com/protons/sprintapi
-├── controller   # endpoints REST + anotações Swagger
-├── service      # regras de negócio
-├── repository   # Spring Data JPA (Query Methods)
-├── model        # entidades Pergunta e Alternativa, enums Categoria e Setor
-├── dto          # records de entrada e saída
-├── exception    # exceções e handler global
-└── config       # OpenAPI e dados de teste
+├── controller # endpoints REST + anotações Swagger
+├── service # regras de negócio
+├── repository # Spring Data JPA (Query Methods)
+├── model # entidades Pergunta e Alternativa, enums Categoria e Setor
+├── dto # records de entrada e saída
+├── exception # exceções e handler global
+└── config # OpenAPI e dados de teste
 ```
