@@ -12,6 +12,8 @@ API REST em **Java 21 + Spring Boot** que serve de motor do quiz educativo sobre
 | _Samuel Keniti_     | _RM567614_ |
 | _Vinicius Morrone_  | _RM566884_ |
 
+**Repositório:** https://github.com/GustavoSiciliano/Challenge_Sprint1_Java_2026
+
 ## O que foi desenvolvido nesta Sprint
 
 - CRUD completo de **Pergunta** (com suas 4 **Alternativas**) usando Spring Data JPA
