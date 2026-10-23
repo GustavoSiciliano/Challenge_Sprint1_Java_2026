@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+// Define operações de acesso aos dados das perguntas
 public interface PerguntaRepository extends JpaRepository<Pergunta, Long> {
 
-    /** Busca por texto (Query Method): enunciado contem o termo, sem diferenciar maiusculas. */
     List<Pergunta> findByEnunciadoContainingIgnoreCase(String texto);
 
     List<Pergunta> findByCategoria(Categoria categoria);

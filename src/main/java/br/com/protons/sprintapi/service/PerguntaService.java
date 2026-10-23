@@ -21,6 +21,7 @@ public class PerguntaService {
 
     private final PerguntaRepository repository;
 
+    // Cria uma pergunta após validar suas alternativas
     @Transactional
     public PerguntaResponse criar(PerguntaRequest req) {
         validarAlternativas(req);
@@ -29,6 +30,7 @@ public class PerguntaService {
         return PerguntaResponse.de(repository.save(pergunta));
     }
 
+    // Lista perguntas, opcionalmente filtradas por categoria
     @Transactional(readOnly = true)
     public List<PerguntaResponse> listar(Categoria categoria) {
         List<Pergunta> perguntas = (categoria == null)
@@ -37,17 +39,20 @@ public class PerguntaService {
         return perguntas.stream().map(PerguntaResponse::de).toList();
     }
 
+    // Busca uma pergunta pelo ID
     @Transactional(readOnly = true)
     public PerguntaResponse buscarPorId(Long id) {
         return PerguntaResponse.de(obter(id));
     }
 
+    // Busca perguntas pelo texto do enunciado
     @Transactional(readOnly = true)
     public List<PerguntaResponse> buscarPorTexto(String texto) {
         return repository.findByEnunciadoContainingIgnoreCase(texto.trim())
                 .stream().map(PerguntaResponse::de).toList();
     }
 
+    // Atualiza os dados de uma pergunta existente
     @Transactional
     public PerguntaResponse atualizar(Long id, PerguntaRequest req) {
         validarAlternativas(req);
@@ -56,16 +61,19 @@ public class PerguntaService {
         return PerguntaResponse.de(repository.save(pergunta));
     }
 
+    // Exclui uma pergunta pelo ID
     @Transactional
     public void excluir(Long id) {
         repository.delete(obter(id));
     }
 
+    // Busca uma pergunta ou lança exceção se não existir
     private Pergunta obter(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Pergunta " + id + " nao encontrada"));
     }
 
+    // Preenche os dados da pergunta e suas alternativas
     private void preencher(Pergunta pergunta, PerguntaRequest req) {
         pergunta.setEnunciado(req.enunciado().trim());
         pergunta.setCategoria(req.categoria());
@@ -76,14 +84,17 @@ public class PerguntaService {
         }
     }
 
-    /** Regras de negocio: 4 alternativas, exatamente 1 correta e sem textos repetidos. */
+    // Valida as alternativas e impede textos repetidos.
     private void validarAlternativas(PerguntaRequest req) {
         long corretas = req.alternativas().stream().filter(a -> Boolean.TRUE.equals(a.correta())).count();
+
         if (corretas != 1) {
             throw new RegraNegocioException("Cada pergunta deve ter exatamente 1 alternativa correta");
         }
+
         long distintas = req.alternativas().stream()
                 .map(a -> a.texto().trim().toLowerCase()).distinct().count();
+
         if (distintas != req.alternativas().size()) {
             throw new RegraNegocioException("As alternativas nao podem ter textos repetidos");
         }
